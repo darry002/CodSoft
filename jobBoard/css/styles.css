@@ -1,0 +1,125 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color Palette */
+:root {
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #6c757d; /* Gray */
+    --background-color: rgba(255, 255, 255, 0.9); /* Transparent white */
+    --accent-color: #ffc107; /* Yellow */
+    --link-color: #007bff; /* Blue for links */
+    --link-hover-color: #0056b3; /* Darker blue on hover */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://img.freepik.com/free-photo/business-people-casual-meeting_53876-101882.jpg?w=1060&t=st=1721155668~exp=1721156268~hmac=7cda4a27c26e48160b35de411dd72854d93ec572c116be2423d17013943fce70');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+
+.navbar {
+    background-color: var(--primary-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color);
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.list-group-item {
+    background-color: var(--background-color);
+    border: 1px solid var(--primary-color);
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.list-group-item h5 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.list-group-item p {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+}
+
+
+.page-background {
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent white */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* @media (max-width: 768px) {
+    .navbar-expand-lg .navbar-collapse {
+        background-color: var(--primary-color);
+    }
+
+    .navbar-nav .nav-link {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .container {
+        max-width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+} */

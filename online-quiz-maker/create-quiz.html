@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Create a New Quiz</h2>
+        <form id="quiz-form">
+            <div id="questions-container">
+                <div class="question-form">
+                    <div class="form-group">
+                        <label for="question">Question</label>
+                        <input type="text" class="form-control" id="question" name="question" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="options">Options (comma separated)</label>
+                        <input type="text" class="form-control" id="options" name="options" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="answer">Correct Answer</label>
+                        <input type="text" class="form-control" id="answer" name="answer" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="addQuestion()">Add Another Question</button>
+            <button type="submit" class="btn btn-primary">Create Quiz</button>
+        </form>
+        <button class="btn btn-secondary mt-3" onclick="location.href='index.html'">Home</button>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

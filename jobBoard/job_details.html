@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Job Board</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="post_job.html">Post Job</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4" id="jobTitle">Software Engineer</h1>
+        <p><strong>Company:</strong> <span id="companyName">XYZ</span></p>
+        <p><strong>Location:</strong> <span id="jobLocation">Job City</span></p>
+        <p><strong>Description:</strong></p>
+        <p id="jobDescription">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a dui et dui fringilla consectetur id nec massa. Aliquam erat volutpat. Sed ut dui ut lacus dictum fermentum vel tincidunt neque.
+        </p>
+
+        <!-- Apply for Job Form -->
+        <div id="applyFormSection" style="display: none;">
+            <h3>Apply for Job</h3>
+            <form id="applyJobForm">
+                <input type="hidden" id="jobId">
+                <div class="form-group">
+                    <label for="applicantName">Your Name</label>
+                    <input type="text" class="form-control" id="applicantName" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantEmail">Your Email</label>
+                    <input type="email" class="form-control" id="applicantEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantResume">Your Resume</label>
+                    <textarea class="form-control" id="applicantResume" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+
+        <!-- Delete Job Button -->
+        <div id="deleteJobSection">
+            <button id="deleteJobBtn" class="btn btn-danger">Delete Job</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const jobId = new URLSearchParams(window.location.search).get("id");
+            const jobTitleElement = document.getElementById("jobTitle");
+            const companyNameElement = document.getElementById("companyName");
+            const jobLocationElement = document.getElementById("jobLocation");
+            const jobDescriptionElement = document.getElementById("jobDescription");
+            const applyFormSection = document.getElementById("applyFormSection");
+            const deleteJobSection = document.getElementById("deleteJobSection");
+
+            const jobDetails = JSON.parse(localStorage.getItem("jobs")).find(job => job.id === jobId);
+            if (jobDetails) {
+                jobTitleElement.textContent = jobDetails.title;
+                companyNameElement.textContent = jobDetails.company;
+                jobLocationElement.textContent = jobDetails.location;
+                jobDescriptionElement.textContent = jobDetails.description;
+                document.getElementById("jobId").value = jobId;
+                applyFormSection.style.display = "block"; // Show apply form once details are loaded
+            }
+
+            // Apply for Job Form Submission
+            const applyJobForm = document.getElementById("applyJobForm");
+            applyJobForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const applicantName = document.getElementById("applicantName").value;
+                const applicantEmail = document.getElementById("applicantEmail").value;
+                const applicantResume = document.getElementById("applicantResume").value;
+
+                const application = {
+                    jobId: jobId,
+                    name: applicantName,
+                    email: applicantEmail,
+                    resume: applicantResume,
+                    date: new Date().toISOString()
+                };
+
+                let applications = JSON.parse(localStorage.getItem("applications")) || [];
+                applications.push(application);
+                localStorage.setItem("applications", JSON.stringify(applications));
+
+                alert("Application submitted successfully!");
+                window.location.href = "index.html"; // Redirect to index.html after applying
+            });
+
+            // Delete Job Button Click Event
+            const deleteJobBtn = document.getElementById("deleteJobBtn");
+            deleteJobBtn.addEventListener("click", function () {
+                let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+                jobs = jobs.filter(job => job.id !== jobId);
+                localStorage.setItem("jobs", JSON.stringify(jobs));
+                alert("Job deleted successfully!");
+                window.location.href = "index.html"; // Redirect to index.html after deleting job
+            });
+        });
+    </script>
+</body>
+</html>
