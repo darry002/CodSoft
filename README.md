@@ -15,7 +15,7 @@ This project is a job board website where employers can post job openings and jo
 
 ## Technologies Used
 - HTML
-- CSS
+- CSS -- Bootstrap
 - JavaScript
 
 ## File Structure
