@@ -18,20 +18,6 @@ This project is a job board website where employers can post job openings and jo
 - CSS -- Bootstrap
 - JavaScript
 
-## File Structure
-job-board/
-│
-├── css/
-│ └── styles.css
-│
-├── js/
-│ └── script.js
-│
-├── index.html
-├── post-job.html
-├── job-details.html
-├── apply-job.html
-
 
 ## Setup and Installation
 1. Clone the repository to your local machine:
