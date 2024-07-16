@@ -1,6 +1,6 @@
 # CodSoft
 
-# Job Board Website
+# 1.Job Board Website
 
 ## Overview
 This project is a job board website where employers can post job openings and job seekers can search and apply for jobs. The website is built using HTML, CSS, and JavaScript and uses localStorage to manage job postings and applications.
